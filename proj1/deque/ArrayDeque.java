@@ -94,7 +94,7 @@ public class ArrayDeque <T>{
     private void resize(int capacity) {
         T[] newItems = (T[]) new Object[capacity];
         for (int i = 1, current = (front + 1) % items.length;
-             i < size && current != rear;
+             i <= size && current != rear;
              i++, current = (current + 1) % items.length) {
             newItems[i] = items[current];
         }
