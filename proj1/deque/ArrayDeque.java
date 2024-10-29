@@ -22,7 +22,7 @@ public class ArrayDeque <T>{
         }
         items[front] = item;
         size++;
-        front = (front - 1) % items.length;
+        front = (front - 1 + items.length) % items.length;
     }
 
     public void addLast(T item) {
@@ -31,7 +31,7 @@ public class ArrayDeque <T>{
         }
         items[rear] = item;
         size++;
-        front = (rear + 1) % items.length;
+        rear = (rear + 1) % items.length;
     }
 
     public boolean isEmpty() {
@@ -43,7 +43,7 @@ public class ArrayDeque <T>{
     }
 
     public void printDeque() {
-        int current = (front + 1) % items.length;
+        int current = front = (front - 1 + items.length) % items.length;
         while (current != rear) {
             System.out.print(items[current] + " ");
             current = (current + 1) % items.length;
@@ -55,7 +55,7 @@ public class ArrayDeque <T>{
         if (size == 0) {
             return null;
         }
-        T data = items[(front + 1) % items.length];
+        T data = items[(front + 1 + items.length) % items.length];
 
         front = (front + 1) % items.length;
         size--;
@@ -88,12 +88,12 @@ public class ArrayDeque <T>{
             return null;
         }
 
-        return items[(front + 1 + index) % items.length];
+        return items[(front - 1 + + index + items.length) % items.length];
     }
 
     private void resize(int capacity) {
         T[] newItems = (T[]) new Object[capacity];
-        for (int i = 1, current = (front + 1) % items.length;
+        for (int i = 1, current = (front - 1 + items.length) % items.length;
              i <= size && current != rear;
              i++, current = (current + 1) % items.length) {
             newItems[i] = items[current];
