@@ -31,14 +31,14 @@ public class ArrayDequeTest {
                 if (operationNumber == 2) {
                     //get
                     int index = StdRandom.uniform(0, ad.size());
-                    System.out.println("getLast(" + ad.get(index) + ")");
+                    System.out.println("get(" + ad.get(index) + ")");
                 } else if (operationNumber == 3) {
                     //remove
                     int forl = StdRandom.uniform(0, 2);
                     if (forl == 0) {
-                        System.out.println("removeFirst(" + ad.removeFirst() + ")");
+                        System.out.println("removeFirst(): " + ad.removeFirst());
                     } else {
-                        System.out.println("removeLast(" + ad.removeLast() + ")");
+                        System.out.println("removeLast(): " + ad.removeLast());
                     }
                 }
             }
