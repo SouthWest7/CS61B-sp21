@@ -88,7 +88,7 @@ public class ArrayDeque <T>{
             return null;
         }
 
-        return items[(front - 1 + + index + items.length) % items.length];
+        return items[(front + 1  + index + items.length) % items.length];
     }
 
     private void resize(int capacity) {
