@@ -1,7 +1,5 @@
 package deque;
 
-import java.lang.reflect.Array;
-
 public class ArrayDeque <T>{
     private T[] items;
     private int size;
@@ -55,9 +53,11 @@ public class ArrayDeque <T>{
         if (size == 0) {
             return null;
         }
-        T data = items[(front + 1) % items.length];
+        int index = (front + 1) % items.length;
+        T data = items[index];
+        items[index] = null;
 
-        front = (front + 1) % items.length;
+        front = index;
         size--;
 
         if (size < items.length / 4 && size > 4) {
@@ -71,9 +71,11 @@ public class ArrayDeque <T>{
         if (size == 0) {
             return null;
         }
-        T data = items[(rear - 1 + items.length) % items.length];
+        int index = (rear - 1 + items.length) % items.length;
+        T data = items[index];
+        items[index] = null;
 
-        rear = (rear - 1 + items.length) % items.length;
+        rear = index;
         size--;
 
         if (size < items.length / 4 && size > 4) {
@@ -88,13 +90,13 @@ public class ArrayDeque <T>{
             return null;
         }
 
-        return items[(front + 1  + index + items.length) % items.length];
+        return items[(front + 1  + index) % items.length];
     }
 
     private void resize(int capacity) {
         T[] newItems = (T[]) new Object[capacity];
-        for (int i = 1, current = (front - 1 + items.length) % items.length;
-             i <= size && current != rear;
+        for (int i = 1, current = (front + 1 + items.length) % items.length;
+             i <= size;
              i++, current = (current + 1) % items.length) {
             newItems[i] = items[current];
         }

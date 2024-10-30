@@ -1,22 +1,65 @@
 package deque;
 
+import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /** Performs some basic array tests. */
 public class ArrayDequeTest {
     @Test
-    public void addRemoveTest() {
-        ArrayDeque<Integer> deque = new ArrayDeque<Integer>();
-        deque.addFirst(1);
-        deque.addFirst(2);
-        deque.addLast(3);
-        deque.addLast(4);
+    public void randomizedTest() {
+        ArrayDeque<Integer> ad  = new ArrayDeque<>();
 
+        int N = 100;
+        for (int i = 0; i < N; i += 1) {
+            int operationNumber = StdRandom.uniform(0, 4);
+            if (operationNumber == 0) {
+                // add
+                int randVal = StdRandom.uniform(0, 100);
+                int forl = StdRandom.uniform(0, 2);
+                if (forl == 0) {
+                    ad.addFirst(randVal);
+                    System.out.println("addFirst(" + randVal + ")");
+                } else {
+                    ad.addLast(randVal);
+                    System.out.println("addLast(" + randVal + ")");
+                }
+            } else if (operationNumber == 1) {
+                // size
+                System.out.println("size: " + ad.size());
+            } else if (ad.size() > 0) {
+                if (operationNumber == 2) {
+                    //get
+                    int index = StdRandom.uniform(0, ad.size());
+                    System.out.println("getLast(" + ad.get(index) + ")");
+                } else if (operationNumber == 3) {
+                    //remove
+                    int forl = StdRandom.uniform(0, 2);
+                    if (forl == 0) {
+                        System.out.println("removeFirst(" + ad.removeFirst() + ")");
+                    } else {
+                        System.out.println("removeLast(" + ad.removeLast() + ")");
+                    }
+                }
+            }
+        }
 
-        deque.removeFirst();
-        deque.removeFirst();
-        deque.removeLast();
-        deque.removeLast();
+    }
+
+    @Test
+    public void resizeTest() {
+        ArrayDeque<Integer> ad  = new ArrayDeque<>();
+        int N = 5;
+        for (int i = 0; i < N; i++) {
+            int randVal = StdRandom.uniform(0, 100);
+            int forl = StdRandom.uniform(0, 2);
+            if (forl == 0) {
+                ad.addFirst(randVal);
+                System.out.println("addFirst(" + randVal + ")");
+            } else {
+                ad.addLast(randVal);
+                System.out.println("addLast(" + randVal + ")");
+            }
+        }
     }
 }
