@@ -55,7 +55,7 @@ public class ArrayDeque <T>{
         if (size == 0) {
             return null;
         }
-        T data = items[(front + 1 + items.length) % items.length];
+        T data = items[(front + 1) % items.length];
 
         front = (front + 1) % items.length;
         size--;
@@ -71,9 +71,9 @@ public class ArrayDeque <T>{
         if (size == 0) {
             return null;
         }
-        T data = items[(rear - 1) % items.length];
+        T data = items[(rear - 1 + items.length) % items.length];
 
-        rear = (rear - 1) % items.length;
+        rear = (rear - 1 + items.length) % items.length;
         size--;
 
         if (size < items.length / 4 && size > 4) {
