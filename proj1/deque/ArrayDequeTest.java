@@ -2,6 +2,9 @@ package deque;
 
 import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
+
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 /** Performs some basic array tests. */
@@ -61,5 +64,20 @@ public class ArrayDequeTest {
                 System.out.println("addLast(" + randVal + ")");
             }
         }
+    }
+
+    @Test
+    public void iteratorTest() {
+        ArrayDeque<Integer> ad  = new ArrayDeque<>();
+        ad.addFirst(1);
+        ad.addFirst(2);
+        ad.addLast(3);
+        ad.addLast(4);
+
+        Iterator<Integer> it = ad.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+
     }
 }
