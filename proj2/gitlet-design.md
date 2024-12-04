@@ -4,21 +4,28 @@
 
 ## Classes and Data Structures
 
-### Class 1
+**Note**: reference or id is sha1 result of object
+
+### Class Commit
 
 #### Fields
 
-1. Field 1
-2. Field 2
+1. message: log message
+2. id
+3. parent commits
+4. tree
 
-
-### Class 2
+### Class Tree
 
 #### Fields
 
-1. Field 1
-2. Field 2
+1. map name to reference (both file/blob and directory/tree )
 
+### Class Blob
+
+1. filename
+2. content
+3. id
 
 ## Algorithms
 
